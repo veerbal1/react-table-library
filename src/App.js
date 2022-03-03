@@ -1,22 +1,18 @@
-import React from 'react';
+/* eslint-disable react/jsx-key */
 import './App.css';
-
-const foo = async () => {
-  await setTimeout(() => {
-    console.log(5, 'React webpack template');
-  }, 5000);
-};
+import React from 'react';
+import DenseTable from './Table';
 
 /**
  * @return {JSX.Element}
  */
 function App() {
-  foo();
-  return (
-    <div>
-      <h1 style={{ textAlign: 'center' }}>My App</h1>
-    </div>
-  );
+    return (
+        <>
+            <h1>React Table using lib</h1>
+            <DenseTable />
+        </>
+    );
 }
 
 export default App;
