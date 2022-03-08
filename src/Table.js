@@ -12,7 +12,7 @@ import EditIcon from '@mui/icons-material/Edit';
 
 import axios from 'axios';
 import { useSortBy, useTable } from 'react-table';
-import { Button, TableSortLabel } from '@mui/material';
+import { Button, TableSortLabel, Typography } from '@mui/material';
 
 export default function DenseTable() {
     const [users, setUsers] = React.useState([]);
@@ -36,6 +36,9 @@ export default function DenseTable() {
             {
                 Header: 'Title',
                 accessor: 'title',
+                Cell: (row) => {
+                    return <Typography variant="caption">{row.value}</Typography>;
+                },
             },
             {
                 Header: 'Body',
@@ -54,7 +57,7 @@ export default function DenseTable() {
                 Cell: ({ row }) => (
                     <Button
                         startIcon={<EditIcon />}
-                        onClick={() => alert(row.id)}
+                        onClick={() => alert(row.values.id)}
                     >
                         Edit
                     </Button>
@@ -99,7 +102,9 @@ export default function DenseTable() {
                                         }}
                                     >
                                         <TableSortLabel
-                                            hideSortIcon={column.id === 'actions'}
+                                            hideSortIcon={
+                                                column.id === 'actions'
+                                            }
                                             active={column.isSorted}
                                             direction={
                                                 column.isSortedDesc
